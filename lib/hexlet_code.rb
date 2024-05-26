@@ -5,6 +5,7 @@ require_relative "hexlet_code/version"
 module HexletCode
   class Error < StandardError; end
 
+  # Tag classname
   class Tag
     def self.build(name, attrs)
       attributes = []
