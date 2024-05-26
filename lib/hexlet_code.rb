@@ -2,6 +2,7 @@
 
 require_relative "hexlet_code/version"
 
+# HexletCode module
 module HexletCode
   class Error < StandardError; end
 
@@ -18,5 +19,9 @@ module HexletCode
         "<#{name}#{attributes.join(" ")}>#{yield if block_given?}</#{name}>"
       end
     end
+  end
+
+  def self.form_for(_, opts = {})
+    "<form action='#{opts[:url] || "#"}' method='post'></form>"
   end
 end
