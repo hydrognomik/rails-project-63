@@ -6,22 +6,23 @@ require_relative "hexlet_code/version"
 module HexletCode
   class Error < StandardError; end
 
-  # Tag classname
-  class Tag
-    def self.build(name, attrs)
-      attributes = []
-      attrs.each do |k, v|
-        attributes << "#{k}='#{v}'"
-      end
-      if %w[br image input].include? name
-        "<#{name} #{attributes.join(" ")} />"
-      else
-        "<#{name}#{attributes.join(" ")}>#{yield if block_given?}</#{name}>"
-      end
-    end
+  autoload :Tag, File.expand_path("./tag", __dir__)
+
+  def self.form_for(obj, opts = {}, &block)
+    @@fields = []
+    @@obj = obj
+    block.call self
+    "<form action=\"#{opts[:url] || "#"}\" method=\"post\">#{@@fields.join("")}</form>"
   end
 
-  def self.form_for(_, opts = {})
-    "<form action='#{opts[:url] || "#"}' method='post'></form>"
+  def self.input(name, args = {})
+    as, = args.values_at(:as)
+    args.delete(:as)
+    value = @@obj.public_send(name)
+    if as == :text
+      @@fields << Tag.build("textarea", { name:, cols: 20, rows: 40, **args }) { value }
+    else
+      @@fields << Tag.build("input", { name:, type: "text", value:, **args })
+    end
   end
 end
