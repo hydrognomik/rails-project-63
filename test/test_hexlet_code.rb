@@ -28,6 +28,10 @@ class TestHexletCode < Minitest::Test
     assert_equal "<form action=\"#\" method=\"post\"></form>", ::HexletCode.form_for(1) { |f| }
   end
 
+  def test_that_form_for_makes_class_form
+    assert_equal "<form action=\"#\" method=\"post\" class=\"hexlet-form\"></form>", ::HexletCode.form_for(1, { class: "hexlet-form" }) { |f| }
+  end
+
   def test_that_form_for_accepts_url
     assert_equal "<form action=\"/form\" method=\"post\"></form>", ::HexletCode.form_for(1, { url: "/form" }) { |f| }
   end
@@ -85,7 +89,7 @@ class TestHexletCode < Minitest::Test
     assert_equal load_fixture(File.expand_path("./fixtures/submit.txt", __dir__)), actual_form
   end
 
-  def test_that_form_for_builds_submit_button
+  def test_that_form_for_builds_default_submit_button
     actual_form = HexletCode.form_for user do |f|
       f.input :name
       f.submit
