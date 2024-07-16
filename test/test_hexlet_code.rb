@@ -69,4 +69,11 @@ class TestHexletCode < Minitest::Test
     end
     assert_match /undefined method `#{missing_key}'/, error.message
   end
+
+  def test_that_form_for_builds_submit_button
+    actual_form = HexletCode.form_for user do |f|
+      f.input :name
+      f.submit "Submit"
+    end
+  end
 end

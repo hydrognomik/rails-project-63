@@ -6,11 +6,19 @@ module HexletCode::Tag
     attrs = attributes(options)
 
     if name == "br"
-      "<#{name}>"
-    elsif %w[image input].include? name
+      return "<#{name}>"
+    end
+
+    input = if %w[image input].include? name
       "<#{name}#{attrs}>"
     else
       "<#{name}#{attrs}>#{yield if block_given?}</#{name}>"
+    end
+
+    if %w[input textarea].include?(name) && options[:type] != "submit"
+      "<label for=\"#{options[:name]}\">#{options[:name].capitalize}</label>#{input}"
+    else
+      input
     end
   end
 
