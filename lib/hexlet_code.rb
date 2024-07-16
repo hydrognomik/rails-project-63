@@ -26,7 +26,7 @@ module HexletCode
     end
   end
 
-  def self.submit(value)
+  def self.submit(value = 'Save')
     @@fields << Tag.build("input", { type: "submit", value: })
   end
 end

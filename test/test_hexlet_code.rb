@@ -75,5 +75,14 @@ class TestHexletCode < Minitest::Test
       f.input :name
       f.submit "Submit"
     end
+    assert_equal load_fixture(File.expand_path("./fixtures/submit.txt", __dir__)), actual_form
+  end
+
+  def test_that_form_for_builds_submit_button
+    actual_form = HexletCode.form_for user do |f|
+      f.input :name
+      f.submit
+    end
+    assert_equal load_fixture(File.expand_path("./fixtures/save.txt", __dir__)), actual_form
   end
 end
