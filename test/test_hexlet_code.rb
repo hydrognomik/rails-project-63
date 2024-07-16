@@ -39,6 +39,13 @@ class TestHexletCode < Minitest::Test
     assert_equal load_fixture(File.expand_path("./fixtures/input.txt", __dir__)), actual_form
   end
 
+  def test_that_form_for_accepts_method
+    actual_form = HexletCode.form_for(user, { method: "get" }) do |f|
+      f.input :name
+    end
+    assert_equal load_fixture(File.expand_path("./fixtures/get_method.txt", __dir__)), actual_form
+  end
+
   def test_that_form_for_accepts_arbitrary_attributes
     actual_form = HexletCode.form_for user do |f|
       f.input :name, class: "user-input"

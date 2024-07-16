@@ -12,7 +12,7 @@ module HexletCode
     @@fields = []
     @@obj = obj
     block.call self
-    "<form action=\"#{opts[:url] || "#"}\" method=\"post\">#{@@fields.join("")}</form>"
+    "<form action=\"#{opts[:url] || "#"}\" method=\"#{opts[:method] || "post"}\">#{@@fields.join("")}</form>"
   end
 
   def self.input(name, args = {})
