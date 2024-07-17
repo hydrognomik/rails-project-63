@@ -22,7 +22,7 @@ module HexletCode
     def self.attributes(attrs)
       attrs.each_with_object([]) do |(k, v), arr|
         arr << " #{k}=\"#{v}\""
-      end.join('')
+      end.join()
     end
   end
 end

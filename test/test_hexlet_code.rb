@@ -27,16 +27,16 @@ class TestHexletCode < Minitest::Test
 
   # Form tests
   def test_that_form_for_makes_form
-    assert_equal '<form action="#" method="post"></form>', ::HexletCode.form_for(1) { |f| }
+    assert_equal '<form action="#" method="post"></form>', ::HexletCode.form_for(1)
   end
 
   def test_that_form_for_makes_class_form
     assert_equal '<form action="#" method="post" class="hexlet-form"></form>',
-                 ::HexletCode.form_for(1, { class: 'hexlet-form' }) { |f| }
+                 ::HexletCode.form_for(1, { class: 'hexlet-form' })
   end
 
   def test_that_form_for_accepts_url
-    assert_equal '<form action="/form" method="post"></form>', ::HexletCode.form_for(1, { url: '/form' }) { |f| }
+    assert_equal '<form action="/form" method="post"></form>', ::HexletCode.form_for(1, { url: '/form' })
   end
 
   def test_that_form_for_builds_inputs
