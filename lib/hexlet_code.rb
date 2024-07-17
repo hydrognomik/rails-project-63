@@ -14,7 +14,7 @@ module HexletCode
     attrs = { action: opts[:url] || '#', method: opts[:method] || 'post' }
     attrs[:class] = opts[:class] if opts[:class]
     block.call self if block_given?
-    "<form#{HexletCode::Tag.attributes(attrs)}>#{@fields.join()}</form>"
+    "<form#{HexletCode::Tag.attributes(attrs)}>#{@fields.join}</form>"
   end
 
   def self.input(name, args = {})
