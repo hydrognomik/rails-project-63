@@ -2,10 +2,6 @@
 
 require 'test_helper'
 
-def load_fixture(path)
-  File.open(path, &:readline)
-end
-
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 
 # HexletCode tests
