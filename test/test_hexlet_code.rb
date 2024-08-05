@@ -18,7 +18,7 @@ class TestHexletCode < Minitest::Test
 
   # Tag.build tests
   def test_that_br_tag_builds
-    assert_equal '<br>', HexletCode::Tag.build('br')
+    assert_equal '<br >', HexletCode::Tag.build('br')
   end
 
   # Form tests

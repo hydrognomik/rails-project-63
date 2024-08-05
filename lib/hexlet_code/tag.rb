@@ -6,17 +6,15 @@ module HexletCode
     def self.build(name, options = {})
       attrs = attributes(options)
 
-      if %w[image input br].include?(name)
-        "<#{name}#{attrs}>"
-      else
-        "<#{name}#{attrs}>#{yield if block_given?}</#{name}>"
-      end
+      return "<#{name} #{attrs}>" if %w[img input br].include?(name)
+
+      "<#{name} #{attrs}>#{yield if block_given?}</#{name}>"
     end
 
     def self.attributes(attrs)
-      attrs.each_with_object([]) do |(k, v), arr|
-        arr << " #{k}=\"#{v}\""
-      end.join
+      attrs.map do |(k, v)|
+        "#{k}=\"#{v}\""
+      end.join(' ')
     end
   end
 end
