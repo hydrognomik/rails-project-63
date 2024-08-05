@@ -28,7 +28,7 @@ module HexletCode
     end
   end
 
-  INPUT_HASH = { input: Input, textarea: Textarea }
+  INPUT_HASH = { input: Input, textarea: Textarea }.freeze
 
   # Renderer class
   class Renderer

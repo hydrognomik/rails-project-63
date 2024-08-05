@@ -10,7 +10,7 @@ module HexletCode
 
   def self.form_for(obj, opts = {}, &block)
     form = Form.new(obj)
-    attrs = { action: opts.fetch(:url, '#'), method: 'post'}.merge(opts.except(:url))
+    attrs = { action: opts.fetch(:url, '#'), method: 'post' }.merge(opts.except(:url))
 
     block.call form if block_given?
 
